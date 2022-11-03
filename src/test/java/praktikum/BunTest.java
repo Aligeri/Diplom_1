@@ -7,6 +7,8 @@ import util.Generator;
 
 import java.util.Random;
 
+import static util.TestData.DELTA;
+
 public class BunTest {
 
     private Bun bunCorrect;
@@ -34,11 +36,11 @@ public class BunTest {
 
     @Test
     public void getCorrectPrice() {
-        Assert.assertEquals(randomPrice, bunCorrect.getPrice(), .0001);
+        Assert.assertEquals(randomPrice, bunCorrect.getPrice(), DELTA);
     }
 
     @Test
     public void getNullPrice() {
-        Assert.assertEquals(0, bunNull.getPrice(), 0);
+        Assert.assertEquals(0, bunNull.getPrice(), DELTA);
     }
 }
