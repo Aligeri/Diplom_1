@@ -2,18 +2,13 @@ package praktikum;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.jupiter.params.ParameterizedTest;
 
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import util.Generator;
 
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -31,11 +26,6 @@ public class BurgerTest {
     private static final Ingredient INGREDIENT_TEST3 = new Ingredient(IngredientType.SAUCE, INGREDIENT_SAUCE_SPIKE, 88);
     private static final List<Burger> BURGER_LIST = Generator.getBurgerList();
     private static Burger burger;
-
-    @Parameterized.Parameters
-    public static Collection<Ingredient> data() {
-        return Arrays.asList(INGREDIENT_TEST1, INGREDIENT_TEST2, INGREDIENT_TEST3);
-    }
 
     private void setUp() {
         burger = BURGER_LIST.get(RANDOM.nextInt(BURGER_LIST.size() - 1));
@@ -55,8 +45,6 @@ public class BurgerTest {
         Assert.assertTrue(burger.getIngredients().contains(INGREDIENT_TEST3));
     }
 
-    @ParameterizedTest
-    @MethodSource("data")
     public void removeOneIngredient(Ingredient args) {
         setUp();
         Assert.assertEquals(3, burger.getIngredients().size());
