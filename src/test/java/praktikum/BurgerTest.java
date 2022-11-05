@@ -45,15 +45,18 @@ public class BurgerTest {
         Assert.assertTrue(burger.getIngredients().contains(INGREDIENT_TEST3));
     }
 
-    public void removeOneIngredient(Ingredient args) {
+    @Test
+    public void removeIngredient() {
         setUp();
         Assert.assertEquals(3, burger.getIngredients().size());
-        burger.removeIngredient(burger.getIngredients().indexOf(args));
-        Assert.assertFalse(burger.getIngredients().contains(args));
+        burger.removeIngredient(0);
+        Assert.assertTrue(burger.getIngredients().contains(INGREDIENT_TEST2));
+        Assert.assertTrue(burger.getIngredients().contains(INGREDIENT_TEST3));
     }
 
     @Test
     public void moveIngredient() {
+        setUp();
         burger = BURGER_LIST.get(RANDOM.nextInt(BURGER_LIST.size() - 1));
         List<Ingredient> ingredientList = burger.getIngredients();
         Ingredient oldIndex1 = ingredientList.get(1);
